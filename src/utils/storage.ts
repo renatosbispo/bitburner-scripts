@@ -1,6 +1,6 @@
 import { isObject } from 'utils/objects';
 
-export function getStorageItem(key: string): unknown | null {
+export function getStorageItem<T>(key: string): T | null {
   const storedItem = localStorage.getItem(key);
 
   if (storedItem === null) {
@@ -8,6 +8,10 @@ export function getStorageItem(key: string): unknown | null {
   }
 
   return JSON.parse(storedItem);
+}
+
+export function removeStorageItem(key: string): void {
+  localStorage.removeItem(key);
 }
 
 export function setStorageItem(key: string, value: unknown): void {
