@@ -1,3 +1,5 @@
+import { GetAllServersResponse } from 'types/server-discovery';
+
 export enum PortOpener {
   BRUTE_SSH = 'BruteSSH.exe',
   FTP_CRACK = 'FTPCrack.exe',
@@ -7,3 +9,5 @@ export enum PortOpener {
 }
 
 export type GetAvailablePortOpenersResponse = PortOpener[];
+
+export type GetCrackableServersResponse = GetAllServersResponse;
