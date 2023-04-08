@@ -1,9 +1,6 @@
-import { StorageType } from 'types/storage';
 import { isObject } from 'utils/objects';
 
-export function getStorageItem<K extends keyof StorageType>(
-  key: K
-): StorageType[K] | null {
+export function getStorageItem(key: string): unknown | null {
   const storedItem = localStorage.getItem(key);
 
   if (storedItem === null) {
@@ -13,17 +10,11 @@ export function getStorageItem<K extends keyof StorageType>(
   return JSON.parse(storedItem);
 }
 
-export function setStorageItem<K extends keyof StorageType>(
-  key: K,
-  value: StorageType[K]
-): void {
+export function setStorageItem(key: string, value: unknown): void {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
-export function updateStorageItem<K extends keyof StorageType>(
-  key: K,
-  value: Partial<StorageType[K]>
-): void {
+export function updateStorageItem(key: string, value: unknown): void {
   const currentValue = getStorageItem(key);
 
   if (currentValue === null) {
