@@ -1,7 +1,6 @@
 import { NS } from '@ns';
 import { withResponse } from 'helpers/exec-and-wait-response';
 import { PortOpener } from 'types/server-cracking';
-import { GetAllServersHostnamesResponse } from 'types/server-discovery';
 
 export async function main(ns: NS): Promise<void> {
   const [uuid] = ns.args;
