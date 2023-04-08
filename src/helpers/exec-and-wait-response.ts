@@ -1,5 +1,5 @@
 import { NS } from '@ns';
-import { getStorageItem, removeStorageItem } from 'utils/storage';
+import { getStorageItem, removeStorageItem, setStorageItem } from 'utils/storage';
 
 export async function execAndWaitResponse<T>(
   ns: NS,
@@ -36,4 +36,13 @@ export async function execAndWaitResponse<T>(
   }
 
   return response as T;
+}
+
+export async function withResponse(
+  uuid: string,
+  execScriptBody: () => Promise<unknown>
+): Promise<void> {
+  const scriptResponse = await execScriptBody();
+
+  setStorageItem(uuid, scriptResponse);
 }
