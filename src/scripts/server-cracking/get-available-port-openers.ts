@@ -1,7 +1,7 @@
 import { NS } from '@ns';
-import { withResponse } from 'helpers/exec-and-wait-response';
-import { GetAvailablePortOpenersArgs, PortOpener } from 'types/server-cracking';
+import { withResponse } from '/helpers/exec-and-wait-response';
 import { ExtendedScriptArgs } from '/types/scripts';
+import { GetAvailablePortOpenersArgs, PortOpener } from '/types/server-cracking';
 
 export async function main(ns: NS): Promise<void> {
   const [uuid] = ns.args as ExtendedScriptArgs<GetAvailablePortOpenersArgs>;

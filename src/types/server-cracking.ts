@@ -1,4 +1,4 @@
-import { GetAllServersResponse } from 'types/server-discovery';
+import { GetAllServersResponse } from './server-discovery';
 
 export enum PortOpener {
   BRUTE_SSH = 'BruteSSH.exe',

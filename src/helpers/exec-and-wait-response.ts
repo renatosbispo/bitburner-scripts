@@ -3,7 +3,7 @@ import {
   getStorageItem,
   removeStorageItem,
   setStorageItem,
-} from 'utils/storage';
+} from '/utils/storage';
 
 export async function execAndWaitResponse<
   Response,

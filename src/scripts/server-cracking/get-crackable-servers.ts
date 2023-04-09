@@ -1,6 +1,6 @@
 import { NS } from '@ns';
-import { withResponse } from 'helpers/exec-and-wait-response';
-import { GetAllServersResponse } from 'types/server-discovery';
+import { withResponse } from '/helpers/exec-and-wait-response';
+import { GetAllServersResponse } from '/types/server-discovery';
 import { ExtendedScriptArgs } from '/types/scripts';
 import { GetCrackableServersArgs } from '/types/server-cracking';
 
