@@ -1,13 +1,20 @@
 import { NS } from '@ns';
-import { getStorageItem, removeStorageItem, setStorageItem } from 'utils/storage';
+import {
+  getStorageItem,
+  removeStorageItem,
+  setStorageItem,
+} from 'utils/storage';
 
-export async function execAndWaitResponse<T>(
+export async function execAndWaitResponse<
+  Response,
+  Args extends (string | number | boolean)[]
+>(
   ns: NS,
   script: string,
   hostname: string,
   numThreads?: number | undefined,
-  ...args: (string | number | boolean)[]
-): Promise<T> {
+  ...args: Args
+): Promise<Response> {
   const uuid = crypto.randomUUID();
 
   ns.scp(script, hostname);
@@ -22,7 +29,7 @@ export async function execAndWaitResponse<T>(
   while (response === null && totalDelay < maxDelay) {
     await ns.sleep(delay);
 
-    response = getStorageItem<T>(uuid);
+    response = getStorageItem<Response>(uuid);
 
     totalDelay += delay;
   }
@@ -30,12 +37,10 @@ export async function execAndWaitResponse<T>(
   removeStorageItem(uuid);
 
   if (response === null && totalDelay >= maxDelay) {
-    throw new Error(
-      `No response received from script ${script}@${hostname}.`
-    );
+    throw new Error(`No response received from script ${script}@${hostname}.`);
   }
 
-  return response as T;
+  return response as Response;
 }
 
 export async function withResponse(
