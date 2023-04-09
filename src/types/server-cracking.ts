@@ -8,6 +8,10 @@ export enum PortOpener {
   SQL_INJECT = 'SQLInject.exe',
 }
 
+export type GetAvailablePortOpenersArgs = [];
+
+export type GetCrackableServersArgs = [servers: string, availablePortOpenersQty: number];
+
 export type GetAvailablePortOpenersResponse = PortOpener[];
 
 export type GetCrackableServersResponse = GetAllServersResponse;
