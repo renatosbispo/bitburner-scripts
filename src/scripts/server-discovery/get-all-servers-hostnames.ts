@@ -1,8 +1,10 @@
 import { NS } from '@ns';
-import { withResponse } from 'helpers/exec-and-wait-response';
+import { withResponse } from '/helpers/exec-and-wait-response';
+import { ExtendedScriptArgs } from '/types/scripts';
+import { GetAllServersHostnamesArgs } from '/types/server-discovery';
 
 export async function main(ns: NS): Promise<void> {
-  const [uuid] = ns.args;
+  const [uuid] = ns.args as ExtendedScriptArgs<GetAllServersHostnamesArgs>;
 
   await withResponse(uuid as string, async () => {
     const serversHostnames = ns.getPurchasedServers();
