@@ -4,3 +4,7 @@ export enum ScriptName {
   GET_AVAILABLE_PORT_OPENERS = '/scripts/server-cracking/get-available-port-openers.js',
   GET_CRACKABLE_SERVERS = '/scripts/server-cracking/get-crackable-servers.js',
 }
+
+export type BaseScriptArgs<T extends unknown[]> = Parameters<
+  (uuid: string, ...r: T) => void
+>;
