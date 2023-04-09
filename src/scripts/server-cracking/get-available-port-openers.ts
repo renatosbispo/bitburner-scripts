@@ -1,11 +1,12 @@
 import { NS } from '@ns';
 import { withResponse } from 'helpers/exec-and-wait-response';
-import { PortOpener } from 'types/server-cracking';
+import { GetAvailablePortOpenersArgs, PortOpener } from 'types/server-cracking';
+import { ExtendedScriptArgs } from '/types/scripts';
 
 export async function main(ns: NS): Promise<void> {
-  const [uuid] = ns.args;
+  const [uuid] = ns.args as ExtendedScriptArgs<GetAvailablePortOpenersArgs>;
 
-  await withResponse(uuid as string, async () => {
+  await withResponse(uuid, async () => {
     const portOpeners = [
       PortOpener.BRUTE_SSH,
       PortOpener.FTP_CRACK,
